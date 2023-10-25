@@ -21,7 +21,7 @@ def decrypt(dict1):
         print(keyList[position], end="")
 
 
-    dict2 = {'A': 'Z',
+dict2 = {'A': 'Z',
                 'B': 'Y',
                 'D': 'W',
                 'C': 'X',
