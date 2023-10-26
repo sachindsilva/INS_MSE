@@ -30,3 +30,4 @@ if __name__ == "__main__":
     plainText = vigenere(key,cipherText)
     print("Plain text : ",plainText)
     
+    
