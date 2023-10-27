@@ -1,20 +1,50 @@
 import random
 
-s = input("Enter a string :")
+s = input("Enter a string : ")
 result = "".join(format(ord(i),'08b') for i in s)
 
-ans = ""
+print("Result : ",result)
 
-#Initial permutation
+answer = ""
 
 for i in range(len(result)):
     if(i%8!=0):
-        ans+=result[i]
+        answer+=result[i]
+        
+l = int(len(answer)/2)
 
-l=int(len(ans)/2)
-left=ans[:l]
-right=ans[l:]
-lt=[2,3,6,7,1,6,5,9]
-keys=[]
-        
-        
+left = answer[:l]
+right = answer[l:]
+
+lt = [2,3,6,7,1,6,5,9]
+keys = []
+
+for i in range(0,8):
+    newKey = ""
+    newAnswer = ""
+    nl = int(left,2)
+
+# left shift
+
+    nl = bin(nl<<lt[i])
+    num = 2+lt[i]
+    nr=int(right,2)
+    nr=bin(nr<<lt[i])
+    num=2+lt[i]
+    newKey = nr[num:]+nl[num:]
+    rm = []
+    
+    while(len(rm)!=8):
+        r = random.randint(0,len(newKey)-1)
+
+        if(r not in rm):
+            rm.append(r)
+            
+    for i in range(len(newKey)):
+        if(i not in rm):
+            newAnswer+=newKey[i]
+
+    keys.append(newAnswer)
+
+for i in range(0,len(keys)):
+    print("Key ",i+1," = ",keys[i])
